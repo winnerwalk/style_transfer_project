@@ -1,0 +1,49 @@
+# CycleGAN Style Transfer Project Configuration
+
+# Model Configuration
+model:
+  type: 'enhanced'  # 'basic' or 'enhanced'
+  lambda_cycle: 10.0
+  lambda_identity: 0.5
+  lambda_perceptual: 1.0
+  
+# Dataset Configuration
+dataset:
+  name: 'horse2zebra'
+  root_dir: './data'
+  image_size: 256
+  
+# Training Configuration
+training:
+  batch_size: 4
+  epochs: 200
+  learning_rate: 0.0002
+  beta1: 0.5
+  beta2: 0.999
+  pool_size: 50
+  save_epoch_freq: 10
+  
+# Data Augmentation
+augmentation:
+  use_color_jitter: true
+  use_mixup: false
+  use_cutmix: false
+  
+# Optimization
+optimization:
+  use_lr_scheduler: true
+  scheduler_type: 'linear'
+  decay_epochs: 100
+  
+# Logging and Saving
+logging:
+  log_dir: './logs'
+  sample_dir: './samples'
+  checkpoint_dir: './checkpoints'
+  use_visualdl: true
+  
+# Evaluation
+evaluation:
+  num_samples: 100
+  metrics: ['PSNR', 'SSIM', 'LPIPS']
+  output_dir: './results'
